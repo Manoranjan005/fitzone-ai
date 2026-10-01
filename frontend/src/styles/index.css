@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-charcoal-950 text-neutral-200 font-body;
+  background-image: radial-gradient(
+      circle at 15% 0%,
+      rgba(164, 242, 76, 0.07),
+      transparent 40%
+    ),
+    radial-gradient(circle at 100% 100%, rgba(164, 242, 76, 0.05), transparent 35%);
+  background-attachment: fixed;
+}
+
+/* Thin, on-theme scrollbar for the chat pane */
+.chat-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background-color: #2e322a;
+  border-radius: 999px;
+}

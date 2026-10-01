@@ -1,0 +1,17 @@
+{
+  "name": "fitzone-ai-backend",
+  "version": "1.0.0",
+  "description": "Backend server for FitZone AI - a fitness-only chatbot powered by the OpenRouter API",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-rate-limit": "^7.4.1"
+  }
+}
