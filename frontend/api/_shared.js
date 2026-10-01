@@ -78,20 +78,24 @@ function heuristicPass(message) {
   return "ambiguous";
 }
 
-// Free OpenRouter models rotate/throttle without much notice, so requests
-// list a primary model plus fallbacks — OpenRouter automatically tries the
-// next one if the first is rate-limited or down. Check
+// Free OpenRouter models rotate/throttle without much notice (this is what
+// just happened — llama-3.3-70b-instruct:free was pulled). To stay robust,
+// the primary model is "openrouter/free", OpenRouter's own router that
+// automatically picks from whatever free models are currently live, with a
+// few individually-verified free models listed as backups. Check
 // https://openrouter.ai/models?fmt=free for the current free list if these
 // ever stop working.
 const COACH_MODELS = [
-  "meta-llama/llama-3.3-70b-instruct:free",
-  "deepseek/deepseek-chat-v3-0324:free",
-  "meta-llama/llama-4-scout:free",
+  "openrouter/free",
+  "nvidia/nemotron-3-super-120b-a12b:free",
+  "qwen/qwen3-next-80b-a3b-instruct:free",
+  "moonshotai/kimi-k2.6:free",
 ];
 
 const CLASSIFIER_MODELS = [
-  "meta-llama/llama-3.1-8b-instruct:free",
-  "meta-llama/llama-3.3-70b-instruct:free",
+  "nvidia/nemotron-3-nano-30b-a3b:free",
+  "openai/gpt-oss-20b:free",
+  "openrouter/free",
 ];
 
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";

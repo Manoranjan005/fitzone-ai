@@ -32,20 +32,25 @@ Use headings, short paragraphs, and bullet or numbered lists for workout plans. 
 - Never promise guaranteed results ("you will definitely lose X kg"); keep guidance realistic and general.
 - Periodically make clear, without being repetitive about it, that you are an AI fitness assistant and not a doctor or certified personal trainer, especially before giving any plan involving intensity changes.`;
 
-// Free OpenRouter models rotate/throttle without much notice, so the main
-// reply call lists a primary model plus fallbacks — OpenRouter automatically
-// tries the next one if the first is rate-limited or down.
+// Free OpenRouter models rotate/throttle without much notice (this is what
+// just happened — llama-3.3-70b-instruct:free was pulled). To stay robust,
+// the primary model is "openrouter/free", OpenRouter's own router that
+// automatically picks from whatever free models are currently live, with a
+// few individually-verified free models listed as backups. OpenRouter tries
+// each in order if one is rate-limited or unavailable.
 // Check https://openrouter.ai/models?fmt=free for the current free list if
 // these ever stop working and swap in whatever's current.
 const COACH_MODELS = [
-  "meta-llama/llama-3.3-70b-instruct:free",
-  "deepseek/deepseek-chat-v3-0324:free",
-  "meta-llama/llama-4-scout:free",
+  "openrouter/free",
+  "nvidia/nemotron-3-super-120b-a12b:free",
+  "qwen/qwen3-next-80b-a3b-instruct:free",
+  "moonshotai/kimi-k2.6:free",
 ];
 
 const CLASSIFIER_MODELS = [
-  "meta-llama/llama-3.1-8b-instruct:free",
-  "meta-llama/llama-3.3-70b-instruct:free",
+  "nvidia/nemotron-3-nano-30b-a3b:free",
+  "openai/gpt-oss-20b:free",
+  "openrouter/free",
 ];
 
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
