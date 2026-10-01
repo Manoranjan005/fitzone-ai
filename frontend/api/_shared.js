@@ -89,7 +89,6 @@ const COACH_MODELS = [
   "openrouter/free",
   "nvidia/nemotron-3-super-120b-a12b:free",
   "qwen/qwen3-next-80b-a3b-instruct:free",
-  "moonshotai/kimi-k2.6:free",
 ];
 
 const CLASSIFIER_MODELS = [
